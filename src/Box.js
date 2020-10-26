@@ -1,33 +1,32 @@
-import React, { Component } from "react";
+import React,{ useState } from "react";
 import { choice } from "./helpers";
 import "./Box.css";
 
-class Box extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { color: choice(this.props.colors) };
-    this.handleClick = this.handleClick.bind(this);
-  }
-  pickColor() {
+function Box(props){
+  
+    const[state,setState]=useState({ color: choice(props.colors) })
+   
+  
+  function pickColor() {
     let newColor;
     do {
-      newColor = choice(this.props.colors);
-    } while (newColor === this.state.color);
+      newColor = choice(props.colors);
+    } while (newColor === state.color);
 
-    this.setState({ color: newColor });
+    setState({ color: newColor });
   }
-  handleClick() {
-    this.pickColor();
+  function handleClick() {
+    pickColor();
   }
-  render() {
+  
     return (
       <div
         className='Box'
-        style={{ backgroundColor: this.state.color }}
-        onClick={this.handleClick}
+        style={{ backgroundColor: state.color }}
+        onClick={handleClick}
       />
     );
-  }
+  
 }
 
 export default Box;

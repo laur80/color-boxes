@@ -1,18 +1,25 @@
-import React, { Component } from "react";
+import React from "react";
 import Box from "./Box";
 import "./BoxContainer.css";
 
-class BoxContainer extends Component {
-  static defaultProps = {
+const b ={
+  a:1,x:55
+};
+const a=[1,2,3];
+// const c=Array.from(b);
+const c={...a}
+console.log(c);
+
+export default function BoxContainer (){
+  const init = {
     numBoxes: 18,
     allColors: ["purple", "magenta", "violet", "pink"]
   };
-  render() {
-    const boxes = Array.from({ length: this.props.numBoxes }).map(() => (
-      <Box colors={this.props.allColors} />
-    ));
-    return <div className='BoxContainer'>{boxes}</div>;
-  }
-}
 
-export default BoxContainer;
+    const boxes = Array.from({ length: init.numBoxes }).map(() => (
+      <Box colors={init.allColors} />
+    ));
+
+    return <div className='BoxContainer'>{boxes}</div>;
+    
+  }
